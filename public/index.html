@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MDN Games: A-Frame demo</title>
+  <script src="https://rawgit.com/aframevr/aframe/d611e70/dist/aframe-master.min.js"></script>
+  <!--script src="javascripts/aframe.min.js"></script-->
+</head>
+<body>
+  <a-scene>
+    <a-sky color="#DDDDDD"></a-sky>
+    <a-light type="directional" color="#FFF" intensity="0.5" position="-1 1 2"></a-light>
+    <a-light type="ambient" color="#FFF"></a-light>
+    <a-camera position="0 1 4" cursor-visible="true" cursor-scale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+    <a-box color="#0095DD" rotation="20 40 0" position="0 3 0">
+      <a-animation attribute="rotation" from="20 0 0" to="20 360 0" direction="alternate" dur="4000" repeat="indefinite" easing="ease"></a-animation>
+    </a-box>
+    <a-entity geometry="primitive: torus; radius: 1; radiusTubular: 0.1; segmentsTubular: 12;" material="color: #EAEFF2; roughness: 0.1; metalness: 0.5;" rotation="10 0 0" position="-3 3 0">
+    <a-animation attribute="scale" to="1 0.5 1" direction="alternate" dur="2000" repeat="indefinite" easing="linear"></a-animation>
+    </a-entity>
+  </a-scene>
+  <script>
+    var scene = document.querySelector('a-scene');
+    var cylinder = document.createElement('a-cylinder');
+    cylinder.setAttribute('color', '#FF9500');
+    cylinder.setAttribute('height', '2');
+    cylinder.setAttribute('radius', '0.75');
+    cylinder.setAttribute('position', '3 3 0');
+    scene.appendChild(cylinder);
+    var t = 0;
+    function render() {
+      t += 0.01;
+      requestAnimationFrame(render);
+      cylinder.setAttribute('position', '3 '+(Math.sin(t*2)+3)+' 0');
+    }
+    render();
+  </script>
+</body>
+</html>
