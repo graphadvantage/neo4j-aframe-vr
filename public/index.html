@@ -46,9 +46,8 @@
       </a-cursor-->
     </a-camera>
 
-    <!--a-entity laser-controls="hand: left" line="color: red; opacity: 0.75;" raycaster-intersect raycaster-cleared>
-      <a-entity tracked-controls="controller: 0; idPrefix: OpenVR"></a-entity>
-    </a-entity-->
+    <a-entity id ='laser-left' laser-controls="hand: left" line="color: red; opacity: 0.75;" cursor-controller raycaster="far: 100">
+    </a-entity>
 
     <a-entity id='laser-right' laser-controls="hand: right" line="color: red; opacity: 0.75;" cursor-controller raycaster="far: 100">
     </a-entity>
