@@ -36,14 +36,31 @@
 </head>
 <body>
   <a-scene  background="color: black" inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
-    <a-light type="ambient" color="#FFFFFF"></a-light>
+    <assets>
+      <img id="skyTexture" crossorigin="anonymous" src="/assets/starmap_8k.jpg">
+      <img id="skyTexture1" crossorigin="anonymous" src="/assets/starwars.png">
+    </assets>
+    <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+    <a-entity light="type: directional;
+                 castShadow: true;
+                 intensity: 0.75;
+                 shadowCameraVisible: false;"
+          position="-5 3 1.5"></a-entity-->
 
-    <a-camera position="0 0 0">
-      <!--a-cursor
+    <a-sky radius="1000" src="#skyTexture" theta-length="180" ></a-sky>
+
+    <!--a-plane height="100" width="100" rotation="-90 0 0" position="0 -10 0" opacity="0.2" color="#CCC" material="side: double" segmentsHeight="10" segmentsWidth="10"></a-plane-->
+
+    <a-camera
+    position="0 0 0"
+    universal-controls="fly: true;
+                 movementEasing: 15;
+                 movementAcceleration: 200;">
+      <a-cursor
         position="0 0 -4"
         geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.05"
         material="color: red; shader: flat">
-      </a-cursor-->
+      </a-cursor>
     </a-camera>
 
     <a-entity id ='laser-left' laser-controls="hand: left" line="color: red; opacity: 0.75;" cursor-controller raycaster="far: 100">
@@ -59,13 +76,20 @@
       forcegraph="json-url: data/graph.json;
         node-label: name;
         node-desc: title;
+        node-resolution: 32;
+        node-color: green;
         node-auto-color-by: label;
+        node-opacity: 1;
         link-label: type;
-        link-label-color: #EDEDED;
-        link-color: '#FF9500';
-        link-width: 1;
-        node-resolution: 16;
-        link-directional-particles: 5">
+        link-width: 0.5;
+        link-opacity: 0.5;
+        link-resolution: 16;
+        link-directional-arrow-length: 3;
+        link-directional-arrow-opacity: 0.5;
+        link-directional-arrow-rel-pos: 1;
+        link-directional-arrow-resolution: 32;
+        link-directional-particles: 3;
+        link-directional-particle-color: red;">
     </a-entity>
 
   </a-scene>
