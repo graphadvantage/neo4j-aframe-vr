@@ -143,7 +143,7 @@
 	    state.tooltipEl.setAttribute('position', '0 -0.3 -1'); // Aligned to canvas bottom
 	    state.tooltipEl.setAttribute('width', 1.5);
 	    state.tooltipEl.setAttribute('align', 'center');
-	    state.tooltipEl.setAttribute('color', 'cyan');
+	    state.tooltipEl.setAttribute('color', 'skyblue');
 	    state.tooltipEl.setAttribute('value', '');
 
 	    // Setup sub-tooltip
@@ -269,12 +269,12 @@
 			var from = this.state.laserRightObj.origin;
 			var to = this.state.laserRightObj.direction;
 
-	    centerRaycaster.setFromCamera(
-	      new THREE.Vector2(0, 0), // Canvas center
-	      this.state.cameraObj
-	    );
+	    //centerRaycaster.setFromCamera(
+	    //  new THREE.Vector2(0, 0), // Canvas center
+	    //  this.state.cameraObj
+	   // );
 
-			//centerRaycaster.set(from, to);
+			centerRaycaster.set(from, to);
 
 	    var intersects = centerRaycaster.intersectObjects(this.state.forceGraph.children)
 	      .filter(function(o) { // Check only node/link objects

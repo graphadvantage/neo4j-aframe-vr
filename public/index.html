@@ -50,26 +50,17 @@
     <a-sky radius="1000" src="#skyTexture" theta-length="180" ></a-sky>
 
     <!--a-plane height="100" width="100" rotation="-90 0 0" position="0 -10 0" opacity="0.2" color="#CCC" material="side: double" segmentsHeight="10" segmentsWidth="10"></a-plane-->
-
-    <a-camera
-    position="0 0 0"
-    universal-controls="fly: true;
-                 movementEasing: 15;
-                 movementAcceleration: 200;">
-      <a-cursor
-        position="0 0 -4"
-        geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.05"
-        material="color: red; shader: flat">
-      </a-cursor>
-    </a-camera>
-
-    <a-entity id ='laser-left' laser-controls="hand: left" line="color: red; opacity: 0.75;" cursor-controller raycaster="far: 100">
-    </a-entity>
-
-    <a-entity id='laser-right' laser-controls="hand: right" line="color: red; opacity: 0.75;" cursor-controller raycaster="far: 100">
-    </a-entity>
-
-    <!--a-entity class="mybox" raycaster-intersect raycaster-cleared position="0 0 -5" geometry="primitive: box" material="color: blue"></a-entity-->
+    <a-entity id="rig" movement-controls="fly: true; speed: 1.5;">
+      <a-camera position="0 0 0" look-controls="pointerLockEnabled: true">
+        <a-cursor
+          position="0 0 -4"
+          geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.05"
+          material="color: red; shader: flat">
+        </a-cursor>
+      </a-camera>
+      <a-entity id ='laser-left' oculus-touch-controls="hand: left"></a-entity>
+      <a-entity id='laser-right' laser-controls="hand: right" line="color: red; opacity: 0.75;" raycaster="far: 100"></a-entity>
+    </a-entity><!-- end of rig-->
 
     <a-entity
       class="fg" raycaster-intersect raycaster-cleared
@@ -88,7 +79,7 @@
         link-directional-arrow-opacity: 0.5;
         link-directional-arrow-rel-pos: 1;
         link-directional-arrow-resolution: 32;
-        link-directional-particles: 3;
+        link-directional-particles: 5;
         link-directional-particle-color: red;">
     </a-entity>
 
