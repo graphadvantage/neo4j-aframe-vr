@@ -1,0 +1,109 @@
+<html lang="en">
+  <head>
+  <title>My A-Frame Scene</title>
+  <script crossorigin="anonymous" src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script crossorigin="anonymous" src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.3/dist/aframe-extras.min.js"></script>
+  <script crossorigin="anonymous" src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.2.0/dist/aframe-physics-system.min.js"></script>
+  <!--script crossorigin="anonymous" src="https://unpkg.com/aframe-leap-hands/dist/aframe-leap-hands.min.js"></script-->
+  <script src="/javascripts/aframe-forcegraph-component.js"></script>
+
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+  <!--script>
+  AFRAME.registerComponent('holdable', {
+  schema: {activeColor: {default: 'orange'}},
+
+  init: function () {
+  this.physics =    /** @type {AFRAME.System}     */ this.el.sceneEl.systems.physics;
+  this.constraint = /** @type {CANNON.Constraint} */ null;
+  this.handID =     /** @type {number} */            null;
+  this.el.addEventListener('leap-holdstart', this.onHoldStart.bind(this));
+  this.el.addEventListener('leap-holdstop', this.onHoldStop.bind(this));
+  },
+
+  onHoldStart: function (e) {
+  if (this.handID) return;
+
+  this.originalColor = this.el.getAttribute('material').color;
+  this.el.setAttribute('material', 'color', this.data.activeColor);
+  this.constraint = new CANNON.LockConstraint(this.el.body, e.detail.body);
+  this.physics.world.addConstraint(this.constraint);
+  this.handID = e.detail.handID;
+  },
+
+  onHoldStop: function (e) {
+  if (e.detail.handID !== this.handID) return;
+
+  this.el.setAttribute('material', 'color', this.originalColor);
+  this.physics.world.removeConstraint(this.constraint);
+  this.constraint = null;
+  this.handID = null;
+  }
+  });
+</script-->
+
+
+</head>
+<body>
+  <a-scene
+    background="color: black"
+    inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+    <assets>
+      <img id="skyTexture" crossorigin="anonymous" src="/assets/starmap_8k.jpg">
+    </assets>
+    <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+    <a-entity light="type: directional;
+                 castShadow: true;
+                 intensity: 0.75;
+                 shadowCameraVisible: false;"
+          position="-5 3 1.5"></a-entity>
+
+    <a-sky radius="1000" src="#skyTexture" theta-length="180" ></a-sky>
+
+    <a-entity id="rig" movement-controls="fly: true; speed: 1.5;">
+      <a-camera position="0 0 0" look-controls="pointerLockEnabled: true">
+        <a-cursor
+          position="0 0 -4"
+          geometry="primitive: ring; radiusInner: 0.04; radiusOuter: 0.05"
+          material="color: red; shader: flat">
+        </a-cursor>
+      </a-camera>
+      <a-entity id ='laser-left' oculus-touch-controls="hand: left"></a-entity>
+      <a-entity id='laser-right' laser-controls="hand: right" line="color: red; opacity: 0.75;" raycaster="far: 100"></a-entity>
+    </a-entity>
+
+    <a-entity
+      class="fg"
+      scale="0.5 0.5 0.5"
+      forcegraph="json-url: data/graph.json;
+        node-rel-size: 5;
+        node-label: name;
+        node-desc: title;
+        node-resolution: 32;
+        node-color: green;
+        node-auto-color-by: label;
+        node-opacity: 1;
+        link-label: type;
+        link-width: 0.5;
+        link-opacity: 0.5;
+        link-resolution: 16;
+        link-directional-arrow-length: 3;
+        link-directional-arrow-rel-pos: 1;
+        link-directional-arrow-resolution: 32;
+        link-directional-particles: 5;
+        link-directional-particle-color: red;">
+    </a-entity>
+
+    <!--a-box width="1" height="1" depth="1" position="0 2 -1" color="red"
+       dynamic-body="shape: box"></a-box-->
+
+       <!-- Generate a hexmap here: http://vonwolfehaus.github.io/von-grid/editor/ -->
+   <!--a-hexgrid static-body position="0 -1 -1" src="/assets/hex-map-square.json"
+              material="color: #0e0e0e;transparent: true; opacity: 0.75"></a-hexgrid-->
+
+  </a-scene>
+</body>
+<script>
+</script>
+
+</html>
