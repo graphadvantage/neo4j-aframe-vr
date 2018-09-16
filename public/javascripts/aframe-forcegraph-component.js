@@ -136,14 +136,14 @@
 	    state.infoEl.setAttribute('position', '0 -0.1 -1'); // Canvas center
 	    state.infoEl.setAttribute('width', 1);
 	    state.infoEl.setAttribute('align', 'center');
-	    state.infoEl.setAttribute('color', 'lavender');
+	    state.infoEl.setAttribute('color', 'red');
 
 	    // Setup tooltip
 	    state.tooltipEl = document.createElement('a-text');
 	    state.tooltipEl.setAttribute('position', '0 -0.3 -1'); // Aligned to canvas bottom
 	    state.tooltipEl.setAttribute('width', 1.5);
 	    state.tooltipEl.setAttribute('align', 'center');
-	    state.tooltipEl.setAttribute('color', 'skyblue');
+	    state.tooltipEl.setAttribute('color', 'whitesmoke');
 	    state.tooltipEl.setAttribute('value', '');
 
 	    // Setup sub-tooltip
@@ -151,7 +151,7 @@
 	    state.subTooltipEl.setAttribute('position', '0 -0.3 -1'); // Aligned to canvas bottom
 	    state.subTooltipEl.setAttribute('width', 1.5);
 	    state.subTooltipEl.setAttribute('align', 'center');
-	    state.subTooltipEl.setAttribute('color', 'whitesmoke');
+	    state.subTooltipEl.setAttribute('color', 'dodgerblue');
 	    state.subTooltipEl.setAttribute('value', '');
 
 	    // Get camera dom element and attach fixed view elements to camera
@@ -463,7 +463,7 @@
 	          console.info('force-graph loading', graphData.nodes.length + ' nodes', graphData.links.length + ' links');
 	        }
 
-					console.log(graphData);
+					//console.log(graphData);
 
 	        state.engineRunning = false; // Pause simulation immediately
 	        state.sceneNeedsRepopulating = true;

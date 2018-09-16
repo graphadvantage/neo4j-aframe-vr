@@ -3,7 +3,7 @@
   <title>My A-Frame Scene</title>
   <script crossorigin="anonymous" src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script crossorigin="anonymous" src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.3/dist/aframe-extras.min.js"></script>
-  <script crossorigin="anonymous" src="../javascripts/aframe-forcegraph-component-neo4j.js"></script>
+  <script crossorigin="anonymous" src="../javascripts/aframe-forcegraph-component.js"></script>
   <script crossorigin="anonymous" src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
   <script crossorigin="anonymous" src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
 
@@ -15,6 +15,7 @@
       <assets>
         <img id="skyTexture" crossorigin="anonymous" src="/assets/starmap_8k.jpg">
         <img id="theMatrix" crossorigin="anonymous" src="http://neo4j-contrib.github.io/developer-resources/language-guides/assets/posters/The%20Matrix.jpg">
+        <img id="ey-logo" crossorigin="anonymous" src="/assets/logo-sponsor-ey-1140x400.jpg">
       </assets>
       <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
       <a-entity light="type: directional;
@@ -25,7 +26,7 @@
 
       <a-sky radius="1000" src="#skyTexture" theta-length="180" ></a-sky>
 
-      <a-entity id="rig" movement-controls="fly: true; speed: 1.5;">
+      <a-entity id="rig" movement-controls="fly: true; speed: 1.25;">
         <a-camera position="0 0 0" look-controls="pointerLockEnabled: true">
           <a-cursor
             position="0 0 -4"
@@ -37,8 +38,8 @@
         <a-entity id='laser-right' laser-controls="hand: right" line="color: red; opacity: 0.75;" raycaster="far: 100"></a-entity>
       </a-entity>
 
-      <a-sphere radius="1" material="shader: flat; src: #theMatrix; repeat: 8 3" color="#FFFFFF" position="0 3 -5">
-        <a-animation attribute="rotation" from="0 0 0" to="0 360 0" direction="normal" dur="10000" repeat="indefinite" easing="linear"></a-animation>
+      <a-sphere radius="3" material="shader: flat; src: #ey-logo; repeat: 4 3" color="#CCCCCC" position="0 0 -10" segments-height="36" segments-width="36">
+        <a-animation attribute="rotation" from="0 0 0" to="0 360 0" direction="reverse" dur="40000" repeat="indefinite" easing="linear"></a-animation>
       </a-sphere>
 
       <!--a-curvedimage material="shader: flat; side: double; src: #theMatrix;" position="0 1 -5" height="2.2" radius="5.7" theta-length="15" rotation="0 100 0"></a-curvedimage-->
@@ -47,11 +48,11 @@
         class="fg"
         scale="0.5 0.5 0.5"
         forcegraph="json-url: data/graph.json;
+          force-engine: ngraph;
           node-rel-size: 5;
           node-label: name;
           node-desc: title;
           node-resolution: 32;
-          node-color: green;
           node-auto-color-by: label;
           node-opacity: 1;
           link-label: type;
@@ -61,7 +62,7 @@
           link-directional-arrow-length: 3;
           link-directional-arrow-rel-pos: 1;
           link-directional-arrow-resolution: 32;
-          link-directional-particles: 5;
+          link-directional-particles: 3;
           link-directional-particle-color: red;">
       </a-entity>
 
