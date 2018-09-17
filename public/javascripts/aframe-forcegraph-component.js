@@ -269,11 +269,14 @@
 			var from = this.state.laserRightObj.origin;
 			var to = this.state.laserRightObj.direction;
 
-	    //centerRaycaster.setFromCamera(
-	    //  new THREE.Vector2(0, 0), // Canvas center
-	    //  this.state.cameraObj
-	   // );
+	    /** uncomment this to see tooltips in desktop
+			 centerRaycaster.setFromCamera(
+	      new THREE.Vector2(0, 0), // Canvas center
+	      this.state.cameraObj
+	    );
+			**/
 
+			/** vr tooltips, comment this out to see tooltops in desktop **/
 			centerRaycaster.set(from, to);
 
 	    var intersects = centerRaycaster.intersectObjects(this.state.forceGraph.children)
