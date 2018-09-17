@@ -1,5 +1,7 @@
 # neo4j-aframe-vr
 
+<img width="975" alt="movie-graph" src="https://user-images.githubusercontent.com/5991751/45605080-1d052980-b9ef-11e8-9e1a-58ee651bd454.png">
+
 just foolin' around with vr...works best in firefox
 
 ### dependencies:
@@ -37,7 +39,7 @@ centerRaycaster.setFromCamera(
 
 there's a very large analytics graph you can get to by navigating to localhost:3000/index-ikea.html
 
-shows 'galaxies' products related by co-buying probability scores of > 0.70
+shows 'galaxies' of products related by co-buying probability scores of > 0.70
 
 TODO:
 
